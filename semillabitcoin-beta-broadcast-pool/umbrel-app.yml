@@ -1,0 +1,39 @@
+manifestVersion: 1
+id: semillabitcoin-beta-broadcast-pool
+category: bitcoin
+name: BP beta
+version: "0.3.21-beta"
+tagline: Broadcast Pool — canal BETA (no usar en producción)
+description: >-
+  Versión BETA de Broadcast Pool para pruebas antes de publicar en la tienda
+  estable. Proxy Electrum que retiene transacciones firmadas y las difunde por
+  bloque, fecha (MTP) o precio.
+
+  Novedades en prueba (v0.3.21): fallback al nodo Bitcoin (Core/Knots/Libre
+  Relay) cuando electrs cae, cifrado at-rest AES-256-GCM, fix de difusión por
+  precio y endurecimiento varios.
+
+  AVISO: canal beta. Instálalo en un nodo de pruebas o asume que los datos
+  podrían no migrar limpiamente. La versión estable vive en la tienda
+  principal de Semilla Bitcoin.
+releaseNotes: >-
+  v0.3.21-beta — Fallback al nodo Bitcoin cuando electrs no responde
+  (altura/MTP, difusión y confirmaciones). Cifrado at-rest migrado a
+  AES-256-GCM (ENC:v2), compatible con datos previos. Fix: las txs por
+  precio no se podían retransmitir. Política pre-broadcast centralizada.
+  aiohttp 3.14.1. Panel protegido por login de Umbrel.
+developer: Semilla Bitcoin
+website: https://semillabitcoin.com
+dependencies:
+  - electrs
+  - bitcoin
+repo: https://github.com/semillabitcoin/broadcast-pool
+support: https://github.com/semillabitcoin/broadcast-pool/issues
+icon: https://raw.githubusercontent.com/semillabitcoin/umbrel-app-store-beta/main/semillabitcoin-beta-broadcast-pool/icon.png
+port: 4040
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+submitter: Semilla Bitcoin
+submission: https://github.com/semillabitcoin/umbrel-app-store-beta

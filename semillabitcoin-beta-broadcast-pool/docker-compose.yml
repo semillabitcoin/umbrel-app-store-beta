@@ -1,0 +1,44 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: ${APP_SEMILLABITCOIN_BETA_BROADCAST_POOL_IP}
+      APP_PORT: ${APP_SEMILLABITCOIN_BETA_BROADCAST_POOL_PORT}
+      # Gate the web dashboard behind Umbrel login (views/exports raw hex, broadcasts).
+      PROXY_AUTH_ADD: "true"
+
+  app:
+    # BETA image — replaced with the real multi-arch digest after the build.
+    image: ghcr.io/semillabitcoin/broadcast-pool:v0.3.21-beta@sha256:18707a158e98cbd7cbdb44986432f108f68c02b7c29afa1e3dd3ca3cef78219b
+    init: true
+    restart: on-failure
+    stop_grace_period: 1m
+    ports:
+      # Distinct host port so BP beta can coexist with the stable Broadcast Pool
+      # (which publishes 50005). Point a test wallet at <node>:50015.
+      - "50015:50005"
+    volumes:
+      - ${APP_DATA_DIR}/data:/data
+    environment:
+      ELECTRUM_HOST: ${APP_ELECTRS_NODE_IP}
+      ELECTRUM_PORT: ${APP_ELECTRS_NODE_PORT}
+      # Bitcoin node RPC fallback (Core/Knots/Libre Relay) — injected via the
+      # 'bitcoin' dependency. Confirmation lookups need txindex=1 on the node.
+      BITCOIN_RPC_HOST: ${APP_BITCOIN_NODE_IP}
+      BITCOIN_RPC_PORT: ${APP_BITCOIN_RPC_PORT}
+      BITCOIN_RPC_USER: ${APP_BITCOIN_RPC_USER}
+      BITCOIN_RPC_PASS: ${APP_BITCOIN_RPC_PASS}
+      DB_PATH: /data/pool.db
+      WEB_PORT: "4040"
+      WEB_BIND: "0.0.0.0"
+      PROXY_PORT: "50005"
+      APP_SEED: ${APP_SEED}
+      APP_PASSWORD: ${APP_PASSWORD}
+      APP_HIDDEN_SERVICE: ${APP_HIDDEN_SERVICE}
+    # Reach other Umbrel apps (e.g. the price oracle) via their host-published ports.
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      default:
+        ipv4_address: ${APP_SEMILLABITCOIN_BETA_BROADCAST_POOL_IP}
