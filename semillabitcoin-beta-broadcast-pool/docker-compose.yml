@@ -10,7 +10,7 @@ services:
 
   app:
     # BETA image — replaced with the real multi-arch digest after the build.
-    image: ghcr.io/semillabitcoin/broadcast-pool:v0.3.21-beta@sha256:18707a158e98cbd7cbdb44986432f108f68c02b7c29afa1e3dd3ca3cef78219b
+    image: ghcr.io/semillabitcoin/broadcast-pool:v0.3.21-beta@sha256:6f84320bea153c486ce59cfad928d247a6502a64082b49c71cc0238bd4f83e5f
     init: true
     restart: on-failure
     stop_grace_period: 1m

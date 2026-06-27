@@ -2,7 +2,7 @@ manifestVersion: 1
 id: semillabitcoin-beta-broadcast-pool
 category: bitcoin
 name: BP beta
-version: "0.3.21-beta"
+version: "0.3.21-beta.2"
 tagline: Broadcast Pool — canal BETA (no usar en producción)
 description: >-
   Versión BETA de Broadcast Pool para pruebas antes de publicar en la tienda
@@ -17,11 +17,13 @@ description: >-
   podrían no migrar limpiamente. La versión estable vive en la tienda
   principal de Semilla Bitcoin.
 releaseNotes: >-
-  v0.3.21-beta — Fallback al nodo Bitcoin cuando electrs no responde
-  (altura/MTP, difusión y confirmaciones). Cifrado at-rest migrado a
-  AES-256-GCM (ENC:v2), compatible con datos previos. Fix: las txs por
-  precio no se podían retransmitir. Política pre-broadcast centralizada.
-  aiohttp 3.14.1. Panel protegido por login de Umbrel.
+  v0.3.21-beta.2 — Indicador siempre visible del respaldo al nodo Bitcoin
+  (en espera / activo / no disponible), con health-check proactivo. Barrido
+  de cifrado al arranque: cifra cualquier tx que quedara en claro en disco
+  por versiones previas. Incluye: fallback al nodo cuando electrs no
+  responde (altura/MTP, difusión, confirmaciones), cifrado AES-256-GCM
+  (ENC:v2) compatible con datos previos, fix de retransmisión por precio,
+  política pre-broadcast centralizada, aiohttp 3.14.1, panel tras login.
 developer: Semilla Bitcoin
 website: https://semillabitcoin.com
 dependencies:
