@@ -30,7 +30,7 @@ services:
       BITCOIN_RPC_USER: ${APP_BITCOIN_RPC_USER}
       BITCOIN_RPC_PASS: ${APP_BITCOIN_RPC_PASS}
       DB_PATH: /data/pool.db
-      WEB_PORT: "4040"
+      WEB_PORT: "4041"
       WEB_BIND: "0.0.0.0"
       PROXY_PORT: "50005"
       APP_SEED: ${APP_SEED}

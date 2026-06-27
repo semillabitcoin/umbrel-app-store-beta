@@ -30,7 +30,7 @@ dependencies:
 repo: https://github.com/semillabitcoin/broadcast-pool
 support: https://github.com/semillabitcoin/broadcast-pool/issues
 icon: https://raw.githubusercontent.com/semillabitcoin/umbrel-app-store-beta/main/semillabitcoin-beta-broadcast-pool/icon.png
-port: 4040
+port: 4041
 gallery: []
 path: ""
 defaultUsername: ""
