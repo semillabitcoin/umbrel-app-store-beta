@@ -2,7 +2,7 @@ manifestVersion: 1
 id: semillabitcoin-beta-broadcast-pool
 category: bitcoin
 name: BP beta
-version: "0.3.21-beta.2"
+version: "0.3.21-beta.3"
 tagline: Broadcast Pool — canal BETA (no usar en producción)
 description: >-
   Versión BETA de Broadcast Pool para pruebas antes de publicar en la tienda
