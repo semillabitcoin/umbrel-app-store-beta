@@ -2,7 +2,7 @@ manifestVersion: 1
 id: semillabitcoin-beta-lendingfolio
 category: finance
 name: LendingFolio
-version: "0.1.7-beta"
+version: "0.1.8-beta"
 tagline: Track your P2P Bitcoin loans, sovereignly
 description: >-
   LendingFolio is a private portfolio tracker for P2P Bitcoin lending
