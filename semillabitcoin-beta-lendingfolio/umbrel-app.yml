@@ -2,7 +2,7 @@ manifestVersion: 1
 id: semillabitcoin-beta-lendingfolio
 category: finance
 name: LendingFolio
-version: "0.1.0-beta"
+version: "0.1.1-beta"
 tagline: Track your P2P Bitcoin loans, sovereignly
 description: >-
   LendingFolio is a private portfolio tracker for P2P Bitcoin lending
@@ -18,12 +18,13 @@ description: >-
 
   Mainnet and testnet (Signet + Sepolia) in one app. No accounts, no tracking.
 releaseNotes: >-
-  First Umbrel beta. Node backend with per-network /data persistence and
-  localStorage -> /data migration. BTC chain adapter (Esplora-like) ready for
-  a local Mempool/electrs source; on-chain verification reports "capability
-  unavailable" until a provider is configured (no silent external calls).
-  Stablecoin balances are manual; external verification is opt-in and OFF by
-  default. Dashboard gated behind Umbrel login.
+  v0.1.1-beta: light theme is now the default; in the liquidation map the
+  counterparty name is clickable and opens that loan; in-app feedback (✉️, NIP-17
+  over Nostr) with a robust outbox (retries on boot, no silent loss). Persistence
+  to /data per network with localStorage migration. BTC on-chain verification
+  reports "capability unavailable" until an electrs provider is wired (no silent
+  external calls). Stablecoin balances are manual; external verification is
+  opt-in/OFF. Dashboard gated behind Umbrel login.
 developer: Semilla Bitcoin
 website: https://semillabitcoin.com
 dependencies:
