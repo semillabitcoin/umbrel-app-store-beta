@@ -10,7 +10,7 @@ services:
 
   app:
     # Pin the multi-arch digest after the GHCR build (docker buildx imagetools inspect ...).
-    image: ghcr.io/semillabitcoin/lendingfolio:v0.1.9-beta@sha256:ec1bc524604c13b9b6522564d4651d3562cb025e28cbae8e3d6c2f7ccc92c077
+    image: ghcr.io/semillabitcoin/lendingfolio:v0.1.10-beta@sha256:43380f76cb7b07d4ac7611aa851fcb63865b875be8c436ea09b0e27f2795b9f1
     init: true
     restart: on-failure
     stop_grace_period: 1m
@@ -20,7 +20,7 @@ services:
       WEB_PORT: "4042"
       WEB_BIND: "0.0.0.0"
       DATA_DIR: "/data"
-      APP_VERSION: "0.1.9-beta"
+      APP_VERSION: "0.1.10-beta"
       # electrs (for the future electrs-local BTC provider). Injected by the 'electrs' dependency.
       ELECTRS_HOST: ${APP_ELECTRS_NODE_IP}
       ELECTRS_PORT: ${APP_ELECTRS_NODE_PORT}
@@ -36,11 +36,11 @@ services:
       BITCOIN_RPC_PORT: ${APP_BITCOIN_RPC_PORT}
       BITCOIN_RPC_USER: ${APP_BITCOIN_RPC_USER}
       BITCOIN_RPC_PASS: ${APP_BITCOIN_RPC_PASS}
-      # Optional local Mempool/Esplora REST (set if the Mempool app is installed) → enables BTC address
-      # history/tx/fees without a custom Electrum client. Leave empty to report capability-unavailable.
-      MEMPOOL_LOCAL_URL: ""
-      # External (non-sovereign) fallback is OFF by default. Only the user enables it (signet/testnet, etc.).
-      ALLOW_EXTERNAL: "false"
+      # Optional local Mempool/Esplora REST (Umbrel Mempool app) → selectable BTC source. Node-specific
+      # (that app's IP isn't injected without a dependency).
+      MEMPOOL_LOCAL_URL: "http://10.21.21.26:3006"
+      # Optional local price oracle (lunaticoin "El Oráculo") → selectable price source. Node-specific.
+      ELORACULO_URL: "http://10.21.22.61:7777"
       APP_HIDDEN_SERVICE: ${APP_HIDDEN_SERVICE}
     networks:
       default:
