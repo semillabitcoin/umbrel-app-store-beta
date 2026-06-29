@@ -2,7 +2,7 @@ manifestVersion: 1
 id: semillabitcoin-beta-lendingfolio
 category: finance
 name: LendingFolio
-version: "0.1.1-beta"
+version: "0.1.2-beta"
 tagline: Track your P2P Bitcoin loans, sovereignly
 description: >-
   LendingFolio is a private portfolio tracker for P2P Bitcoin lending
@@ -18,6 +18,11 @@ description: >-
 
   Mainnet and testnet (Signet + Sepolia) in one app. No accounts, no tracking.
 releaseNotes: >-
+  v0.1.2-beta: native BTC on-chain reads from YOUR node — the backend auto-detects a
+  local electrs (Electrum) and uses it for address balances, tx status and fees (falls
+  back to a local mempool or, only if you allow it, an external explorer). No manual
+  config. Plus everything from v0.1.1.
+
   v0.1.1-beta: light theme is now the default; in the liquidation map the
   counterparty name is clickable and opens that loan; in-app feedback (✉️, NIP-17
   over Nostr) with a robust outbox (retries on boot, no silent loss). Persistence
