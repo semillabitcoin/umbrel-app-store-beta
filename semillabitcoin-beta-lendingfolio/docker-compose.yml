@@ -10,7 +10,7 @@ services:
 
   app:
     # Pin the multi-arch digest after the GHCR build (docker buildx imagetools inspect ...).
-    image: ghcr.io/semillabitcoin/lendingfolio:v0.1.5-beta@sha256:49c4d14635ee5f236823d5f30966f6a2411a0c26b157668103d9ff0cd07b28b3
+    image: ghcr.io/semillabitcoin/lendingfolio:v0.1.6-beta@sha256:358144b93d19d7bc539d50e427a231b026cb70d5f8b7820716e81fc6cdbe0659
     init: true
     restart: on-failure
     stop_grace_period: 1m
@@ -20,11 +20,14 @@ services:
       WEB_PORT: "4042"
       WEB_BIND: "0.0.0.0"
       DATA_DIR: "/data"
-      APP_VERSION: "0.1.5-beta"
+      APP_VERSION: "0.1.6-beta"
       # electrs (for the future electrs-local BTC provider). Injected by the 'electrs' dependency.
       ELECTRS_HOST: ${APP_ELECTRS_NODE_IP}
       ELECTRS_PORT: ${APP_ELECTRS_NODE_PORT}
       ELECTRS_TIMEOUT_MS: "30000"
+      # Egress over Tor (no IP leak) for services without a local server; user can opt into clearnet.
+      TOR_PROXY_IP: ${TOR_PROXY_IP}
+      TOR_PROXY_PORT: ${TOR_PROXY_PORT}
       # Bitcoin Core RPC — HEALTH ONLY (node up / height). Not used for address history or broadcast.
       BITCOIN_RPC_HOST: ${APP_BITCOIN_NODE_IP}
       BITCOIN_RPC_PORT: ${APP_BITCOIN_RPC_PORT}

@@ -2,7 +2,7 @@ manifestVersion: 1
 id: semillabitcoin-beta-lendingfolio
 category: finance
 name: LendingFolio
-version: "0.1.5-beta"
+version: "0.1.6-beta"
 tagline: Track your P2P Bitcoin loans, sovereignly
 description: >-
   LendingFolio is a private portfolio tracker for P2P Bitcoin lending
@@ -18,9 +18,14 @@ description: >-
 
   Mainnet and testnet (Signet + Sepolia) in one app. No accounts, no tracking.
 releaseNotes: >-
+  v0.1.6-beta: privacy egress gateway. On-chain lookups use YOUR local servers when available
+  (electrs for BTC); anything without a local server (BTC testnet, Liquid) goes out OVER TOR by
+  default, so your IP and addresses are never revealed to a third party. New Settings toggle
+  "external requests in the clear (no Tor)" to opt out. The browser never calls explorers
+  directly — the backend is the single egress point.
+
   v0.1.2-beta: native BTC on-chain reads from YOUR node — the backend auto-detects a
-  local electrs (Electrum) and uses it for address balances, tx status and fees (falls
-  back to a local mempool or, only if you allow it, an external explorer). No manual
+  local electrs (Electrum) and uses it for address balances, tx status and fees. No manual
   config. Plus everything from v0.1.1.
 
   v0.1.1-beta: light theme is now the default; in the liquidation map the
