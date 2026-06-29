@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: ${APP_SEMILLABITCOIN_LENDINGFOLIO_IP}
+      APP_PORT: ${APP_SEMILLABITCOIN_LENDINGFOLIO_PORT}
+      # Financial data → require the Umbrel login. Explicit so it never relies on a store default.
+      PROXY_AUTH_ADD: "true"
+
+  app:
+    # Pin the multi-arch digest after the GHCR build (docker buildx imagetools inspect ...).
+    image: ghcr.io/semillabitcoin/lendingfolio:v0.1.0-beta@sha256:fbdd8b5742ed13b72672af9cc4494758649fff8a0e3a747ac195e999c81baf06
+    init: true
+    restart: on-failure
+    stop_grace_period: 1m
+    volumes:
+      - ${APP_DATA_DIR}/data:/data
+    environment:
+      WEB_PORT: "4042"
+      WEB_BIND: "0.0.0.0"
+      DATA_DIR: "/data"
+      APP_VERSION: "0.1.0-beta"
+      # electrs (for the future electrs-local BTC provider). Injected by the 'electrs' dependency.
+      ELECTRS_HOST: ${APP_ELECTRS_NODE_IP}
+      ELECTRS_PORT: ${APP_ELECTRS_NODE_PORT}
+      # Bitcoin Core RPC — HEALTH ONLY (node up / height). Not used for address history or broadcast.
+      BITCOIN_RPC_HOST: ${APP_BITCOIN_NODE_IP}
+      BITCOIN_RPC_PORT: ${APP_BITCOIN_RPC_PORT}
+      BITCOIN_RPC_USER: ${APP_BITCOIN_RPC_USER}
+      BITCOIN_RPC_PASS: ${APP_BITCOIN_RPC_PASS}
+      # Optional local Mempool/Esplora REST (set if the Mempool app is installed) → enables BTC address
+      # history/tx/fees without a custom Electrum client. Leave empty to report capability-unavailable.
+      MEMPOOL_LOCAL_URL: ""
+      # External (non-sovereign) fallback is OFF by default. Only the user enables it (signet/testnet, etc.).
+      ALLOW_EXTERNAL: "false"
+      APP_HIDDEN_SERVICE: ${APP_HIDDEN_SERVICE}
+    networks:
+      default:
+        ipv4_address: ${APP_SEMILLABITCOIN_LENDINGFOLIO_IP}

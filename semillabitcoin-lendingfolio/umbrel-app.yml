@@ -1,0 +1,41 @@
+manifestVersion: 1
+id: semillabitcoin-lendingfolio
+category: finance
+name: LendingFolio
+version: "0.1.0-beta"
+tagline: Track your P2P Bitcoin loans, sovereignly
+description: >-
+  LendingFolio is a private portfolio tracker for P2P Bitcoin lending
+  (Hodl Hodl, Debifi, Lendasat, Firefish). Track loans, collateral, LTV /
+  margin-call & liquidation maps, repayments, BTC holdings and stablecoin
+  balances, with a clean dashboard for lenders and borrowers.
+
+  Sovereign by design: your data is stored on your Umbrel under /data
+  (mainnet and testnet kept separate), never in a browser you might clear.
+  BTC on-chain data can be read from your own node; stablecoin balances are
+  entered manually (their chains live outside Bitcoin), with optional,
+  off-by-default external verification.
+
+  Mainnet and testnet (Signet + Sepolia) in one app. No accounts, no tracking.
+releaseNotes: >-
+  First Umbrel beta. Node backend with per-network /data persistence and
+  localStorage -> /data migration. BTC chain adapter (Esplora-like) ready for
+  a local Mempool/electrs source; on-chain verification reports "capability
+  unavailable" until a provider is configured (no silent external calls).
+  Stablecoin balances are manual; external verification is opt-in and OFF by
+  default. Dashboard gated behind Umbrel login.
+developer: Semilla Bitcoin
+website: https://semillabitcoin.com
+dependencies:
+  - bitcoin
+  - electrs
+repo: https://github.com/semillabitcoin/lendingfolio
+support: https://github.com/semillabitcoin/lendingfolio/issues
+icon: https://raw.githubusercontent.com/semillabitcoin/umbrel-app-store-beta/main/semillabitcoin-lendingfolio/icon.png
+port: 4042
+gallery: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""
+submitter: Semilla Bitcoin
+submission: https://github.com/semillabitcoin/umbrel-app-store-beta
