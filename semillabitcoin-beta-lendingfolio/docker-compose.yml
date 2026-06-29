@@ -3,8 +3,8 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      APP_HOST: ${APP_SEMILLABITCOIN_LENDINGFOLIO_IP}
-      APP_PORT: ${APP_SEMILLABITCOIN_LENDINGFOLIO_PORT}
+      APP_HOST: ${APP_SEMILLABITCOIN_BETA_LENDINGFOLIO_IP}
+      APP_PORT: ${APP_SEMILLABITCOIN_BETA_LENDINGFOLIO_PORT}
       # Financial data → require the Umbrel login. Explicit so it never relies on a store default.
       PROXY_AUTH_ADD: "true"
 
@@ -37,4 +37,4 @@ services:
       APP_HIDDEN_SERVICE: ${APP_HIDDEN_SERVICE}
     networks:
       default:
-        ipv4_address: ${APP_SEMILLABITCOIN_LENDINGFOLIO_IP}
+        ipv4_address: ${APP_SEMILLABITCOIN_BETA_LENDINGFOLIO_IP}
