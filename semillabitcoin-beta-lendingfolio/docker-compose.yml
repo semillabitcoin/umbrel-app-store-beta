@@ -10,7 +10,7 @@ services:
 
   app:
     # Pin the multi-arch digest after the GHCR build (docker buildx imagetools inspect ...).
-    image: ghcr.io/semillabitcoin/lendingfolio:v0.1.19-beta@sha256:a683308cccb09fd2c3b54bd5e2131fb08521f965aa4015b43cf82e1ed65f52e1
+    image: ghcr.io/semillabitcoin/lendingfolio:v0.1.20-beta@sha256:adf84c86ebc8f741201a8799af656c21dba4aafa3d0e07b5a9bdef613eac212d
     init: true
     restart: on-failure
     stop_grace_period: 1m
@@ -20,7 +20,7 @@ services:
       WEB_PORT: "4042"
       WEB_BIND: "0.0.0.0"
       DATA_DIR: "/data"
-      APP_VERSION: "0.1.19-beta"
+      APP_VERSION: "0.1.20-beta"
       # electrs (for the future electrs-local BTC provider). Injected by the 'electrs' dependency.
       ELECTRS_HOST: ${APP_ELECTRS_NODE_IP}
       ELECTRS_PORT: ${APP_ELECTRS_NODE_PORT}
